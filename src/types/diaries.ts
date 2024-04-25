@@ -1,5 +1,6 @@
 export type Weather = "sunny" | "rainy" | "cloudy" | "windy" | "stormy";
 export type Visibility = "good" | "ok" | "poor" | "great";
+export type NonSensitiveDiaryEntry = Omit<DiaryEntry, "comment">;
 
 export interface DiaryEntry {
   id: number;
