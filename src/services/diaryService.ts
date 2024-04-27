@@ -14,8 +14,13 @@ function getNonSensitiveEntries(): NonSensitiveDiaryEntry[] {
   }));
 }
 
+function getEntry(id: number) {
+  const entry = entries.find((diary) => diary.id === id);
+  return entry;
+}
+
 function addEntry() {
   return null;
 }
 
-export { getEntries, addEntry, getNonSensitiveEntries };
+export { getEntries, addEntry, getNonSensitiveEntries, getEntry };
