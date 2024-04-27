@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import express from "express";
 const router = express.Router();
-import { getEntry, getNonSensitiveEntries } from "../services/diaryService";
+import {
+  addEntry,
+  getEntry,
+  getNonSensitiveEntries,
+} from "../services/diaryService";
 
 router.get("/", (_req, res) => {
   const entries = getNonSensitiveEntries();
@@ -14,8 +19,9 @@ router.get("/:id", (req, res) => {
   res.send(entry);
 });
 
-router.post("/", (_req, res) => {
-  res.send("Saving a diary!");
+router.post("/", (req, res) => {
+  const savedEntry = addEntry(req.body);
+  res.json(savedEntry);
 });
 
 export default router;
