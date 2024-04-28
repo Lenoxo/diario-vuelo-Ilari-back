@@ -1,6 +1,7 @@
 import { DiaryEntry } from "../src/types/diaries";
+import { checkNewEntry } from "../src/utils";
 
-export const entries: DiaryEntry[] = [
+const data = [
   {
     id: 1,
     date: "2017-01-01",
@@ -30,3 +31,10 @@ export const entries: DiaryEntry[] = [
     comment: "I almost failed the landing but I survived",
   },
 ];
+
+// The object mapping is done here to ensure that visibility and weather types (as enums) matches with the diaries previous data
+export const entries: DiaryEntry[] = data.map((obj) => {
+  const newObj = checkNewEntry(obj) as DiaryEntry;
+  newObj.id = obj.id;
+  return newObj;
+});
